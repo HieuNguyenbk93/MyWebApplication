@@ -1,6 +1,7 @@
 ﻿using MyWebApplication.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -10,6 +11,7 @@ namespace MyWebApplication.Controllers
 {
     public class QuestionController : Controller
     {
+        DbConnectContext _db = new DbConnectContext();
         // GET: Question
         public ActionResult Index()
         {
@@ -27,6 +29,18 @@ namespace MyWebApplication.Controllers
                     new Student() { StudentID = 5, StudentName = "Ron"  }
                 };
                 return Json(studentList, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+        public ActionResult GetList()
+        {
+            try
+            {
+                var ListQuestion = _db.Question.Where(x => x.Id > 0).ToList();
+                return Json(ListQuestion, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

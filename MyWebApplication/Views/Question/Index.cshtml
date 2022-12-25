@@ -11,5 +11,21 @@
     <div ng-repeat="item in listData">
         <span>Id: {{item.StudentID}} --- Name: {{item.StudentName}}</span>
     </div>
+
+    <h2>Danh sách câu hỏi</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>STT</td>
+                <td>Nội dung</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in listQuestion">
+                <th>{{$index+1}}</th>
+                <th>{{item.Name}}</th>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
