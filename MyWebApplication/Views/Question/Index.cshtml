@@ -24,8 +24,20 @@
             <tr ng-repeat="item in listQuestion">
                 <th>{{$index+1}}</th>
                 <th>{{item.Name}}</th>
+                <th>
+                    <button ng-click="delete(item)">Delete</button>
+                </th>
+                <th>
+                    <button ng-click="update(item.Id)">Update</button>
+                </th>
             </tr>
         </tbody>
     </table>
+    <h2>Thêm câu hỏi</h2>
+    <input ng-model="cauHoi" placeholder="nhập nội dung câu hỏi thêm"/>
+    <button ng-click="add()">Thêm câu hỏi</button>
+    <h2>Sửa câu hỏi</h2>
+    <p>Nhập nội dung ở đây, bấm nút sửa trên danh sách</p>
+    <input ng-model="noiDung" placeholder="nhập nội dung sửa" />
 </div>
 
